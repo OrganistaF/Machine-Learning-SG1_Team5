@@ -11,6 +11,7 @@ import joblib
 # Cargar el dataset
 df = pd.read_csv('StudentPerformanceFactors.csv')
 
+# 1. Definir nuevas columnas basadas en tu aclaración
 numeric_cols = [
     'Hours_Studied',
     'Attendance',        # Asumiremos que es numérica (ej: porcentaje 0-100)

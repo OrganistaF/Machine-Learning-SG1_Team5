@@ -6,7 +6,7 @@ df = pd.read_csv('StudentPerformanceFactors.csv')
 model = joblib.load('modelo_calificaciones.pkl')
 
 # 2. Extraer fila específica (ej: fila 5)
-fila = df.iloc[519].copy().drop('Exam_Score', errors='ignore')
+fila = df.iloc[1351].copy().drop('Exam_Score', errors='ignore')
 
 print(fila.to_dict())
 # 3. Convertir y predecir
