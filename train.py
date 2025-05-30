@@ -32,7 +32,7 @@ categorical_cols = [
     'Peer_Influence',
     'Learning_Disabilities',
     'Parental_Education_Level',
-    'Distance_from_Home',  # Asumido como categórico (ej: 'Close','Far')
+    'Distance_from_Home',
     'Gender'
 ]
 
@@ -110,5 +110,4 @@ if __name__ == "__main__":
     prediction = predict_score(user_input)
     print(f'\nPredicción de calificación: {prediction:.1f} puntos')
     
-    # Guardar modelo para uso futuro
     joblib.dump(model, 'modelo_calificaciones.pkl')

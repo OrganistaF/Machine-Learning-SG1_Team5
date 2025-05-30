@@ -1,16 +1,8 @@
-# %% [code] ##########################
-#### 1. CONFIGURACIÓN INICIAL ####
-##########################
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy import stats
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, r2_score
-import xgboost as xgb
-import joblib
+
 
 # Configuración de visualización
 plt.style.use('ggplot')
@@ -123,14 +115,9 @@ plt.tight_layout()
 plt.savefig('relaciones_clave.png', bbox_inches='tight')
 plt.show()
 
-# %% [code] ##########################
-#### 5. PREPARACIÓN DE DATOS PARA MODELADO ####
-##########################
-# Ingeniería de características
 df['Study_Efficiency'] = df['Previous_Scores'] / (df['Hours_Studied'] + 1)
 df['Resources_Access'] = df['Access_to_Resources'].map({'Low': 0, 'Medium': 1, 'High': 2})
 
-# Codificación de variables categóricas
 categorical_cols = ['Parental_Involvement', 'Extracurricular_Activities', 
                     'Motivation_Level', 'Internet_Access', 'Teacher_Quality',
                     'School_Type', 'Peer_Influence', 'Learning_Disabilities',
@@ -138,7 +125,6 @@ categorical_cols = ['Parental_Involvement', 'Extracurricular_Activities',
 
 df_encoded = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
 
-# Separación de datos
 X = df_encoded.drop('Exam_Score', axis=1)
 y = df_encoded['Exam_Score']
 X_train, X_test, y_train, y_test = train_test_split(
